@@ -19,6 +19,6 @@ st.title("Title Here")
 #adding discription to your website
 st.text('Description')
 
-pd.read_csv("report_2018-2019.csv")
+df = pd.read_csv("report_2018-2019.csv")
 
 print(df.head(2))
