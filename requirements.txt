@@ -1,5 +1,7 @@
 pandas
+wget
 streamlit
+plotly
 matplotlib
-plotly==5.12.0
 seaborn
+sklearn
