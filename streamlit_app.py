@@ -24,7 +24,7 @@ df = pd.read_csv("report_2018-2019.csv")
 
 #Chloe
 st.header("Introduction")
-st.text('This week, we were given data about the happiness levels of ')
+st.text('This week, we were given data about the happiness levels of different countries. We used this data to identify what factors affect happiness and how they do so.')
 
 
 #Does a higher happiness index score lead to higher life expectancy?
@@ -38,16 +38,21 @@ st.text('This week, we were given data about the happiness levels of ')
 #Isaiah
 #Does generosity affect Happiness Score of a country?
 #Scatter Plot hue = country
+import seaborn as sns     #
+sns.set_theme()
 
+sns.scatterplot()
+    data=df,
+    x="Generosity", y="Score")  # need to study more
 
 #Taylor
 #Is Perception of Corruption correlated to happiness?
-st.header
+st.header("Hypothesis: Is Perception of Corruption correlated to happiness?")
 
+
+df.head(10)
 import seaborn as sns
 sns.set_theme()
-
-url_dataframe = 'https://github.com/Shaif95/AI_camp/raw/main/report_2018-2019.csv'
 
 
 sns.scatterplot(
@@ -60,21 +65,29 @@ sns.scatterplot(
 
 #Marcus
 #Does Freedom to make Choices to Happiness correlate to happines?
+sns.scatterplot(
+    data=df,
+    x="Social support", y="Score")
 #Does Social Support correlate to happines?
+sns.scatterplot(
+    data=df,
+   x="Freedom to make life choices", y="Score")
 
 #Matthew
 #Does high/low gdp per capita correlate to happines?
-url = 'https://github.com/Shaif95/AI_camp/raw/main/report_2018-2019.csv'
 
-filename = wget.download(url)
 import pandas as pd
-
-df = pd.read_csv(filename)
-
-
+st.header("Hypothesis: Does a higher GDP per capita lead to a higher level of happiness?")
+#Cleaning Data
+df.dropna(inplace = True)
+df.drop_duplicates(inplace = True)
 #Scatter plot, hue = country
-
+import seaborn as sns
+sns.scatterplot(data = df, x="GDP per capita", y="Score")
 #Can we predict Happiness score using GDP Per Capita?
+from seaborn.matrix import heatmap
+sns.heatmap(df.corr())
+
 #Linear Regression Plot
 
 #Conclusion
