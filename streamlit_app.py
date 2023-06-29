@@ -3,13 +3,11 @@ import pandas as pd
 import plotly.express as px
 import seaborn as sns
 import matplotlib.pyplot as plt
+import numpy as np
 import warnings
 
 warnings.filterwarnings("ignore")
 st.set_option('deprecation.showPyplotGlobalUse', False)
-
-import matplotlib.pyplot as plt
-import numpy as np
 
 #look for more information here https://docs.streamlit.io/library/cheatsheet
 
@@ -41,7 +39,7 @@ df = pd.read_csv("report_2018-2019.csv")
 #Chloe
 st.header("Introduction")
 st.write(
-  'This week, we were given data about the happiness levels of different countries. We used this data to identify what factors affect happiness and how they do so.'
+  "This week, we were given data about the happiness levels of different countries. Along with each country's happiness index, we were also given other pieces of information that may factor in how content a region is. We used this data to create hypothesises and identify what affects happiness and how they do so."
 )
 
 st.header(
@@ -61,7 +59,9 @@ st.pyplot()
 #Scatter Plot
 
 st.header('What countries have the highest and lowest happiness index?')
-st.write('As the bar graph shows, the countries with the highest happiness index are Finland, Norway and Denmark. Finland has the highest score of 7.632. On the other hand the countries with the lowest scores are Burundi, Central African Republic and South Sudan. Burundi has the lowest score of 2.905, a little over a third of Finland.')
+st.write(
+  'As the bar graph shows, the countries with the highest happiness index are Finland, Norway and Denmark. Finland has the highest score of 7.632. On the other hand the countries with the lowest scores are Burundi, Central African Republic and South Sudan. Burundi has the lowest score of 2.905, a little over a third of the score Finland received.'
+)
 
 dfw = df[df["Year"] == 2018]
 sorted_dfw = dfw.sort_values('Score', ascending=False)
@@ -87,8 +87,13 @@ import seaborn as sns
 
 sns.set_theme()
 
-sns.scatterplot(data=df, x="Generosity", y="Score")  
-st.write ("The scatter plot shows that whether there are low or high rates of generosity its effects on happiness are minimal ")
+st.header(
+  "hypothesis: does generosity affect the happiness score of a country")
+
+sns.scatterplot(data=df, x="Generosity", y="Score")
+st.write(
+  "The scatter plot shows that whether there are low or high rates of generosity its effects on happiness are minimal "
+)
 st.pyplot()
 
 #Taylor
@@ -102,6 +107,17 @@ import seaborn as sns
 sns.set_theme()
 
 sns.scatterplot(data=df, x="Perceptions of corruption", y="Score")
+
+import matplotlib.pyplot as plt
+
+x_values = [0.1, 0.2, 0.3, 0.4]
+y_values = [2, 4, 6, 8]
+plt.scatter(x_values, y_values)
+line_slope = 20
+line_intercept = 0
+line_values = [line_slope * x + line_intercept for x in x_values]
+plt.plot(x_values, line_values, color='red')
+plt.show()
 
 st.pyplot()
 
@@ -143,23 +159,22 @@ import seaborn as sns
 
 sns.scatterplot(data=df, x="GDP per capita", y="Score")
 
-
 st.pyplot()
 
 from seaborn.matrix import heatmap
 
 sns.heatmap(df.corr())
 
-
 st.pyplot()
 
 st.write(
   "As seen in the heatmap, GDP and score have a high level of correlation. This means that countries who have a higher GDP per capita tend to also have a high level of happiness. However, while this does seem possible, this isnt always 100% true. The country with the highest GDP per capita (United States of America) does not have the hgihest level of happiness, meaning that GDP may not always lead to hgih levels of happiness. Nonetheless, as seen within the scatterplot, there is a positive correlation between GDP per Capita and Score."
 )
-df[df["Overall rank"] <= 5].head(20)
+st.dataframe(df[df["Overall rank"] <= 5].head(20))
 #Can we predict Happiness score using GDP Per Capita?
 st.header("Can we predict a happiness score using GDP Per Capita")
 #Linear Regression Plot
+import statistics
 from sklearn import *
 import numpy as np
 import matplotlib
@@ -196,5 +211,7 @@ plt.grid('on')
 plt.show()
 
 st.pyploy(plt)
-st.write("As seen in the plot of linear regression an increase in GDP also typically leads to an increase in score. Still, we are able to see that whie Happiness Score and GDP per Capita might be related they are not exact")
+st.write(
+  "As seen in the plot of linear regression an increase in GDP also typically leads to an increase in score. Still, we are able to see that whie Happiness Score and GDP per Capita might be related they are not exact. This means we might be able to make close prediction of what a country would look like with a certain GDP but it wouldnt be fully accurate. However, this does offer the possibility of a fairly accurate prediction."
+)
 #Conclusion
