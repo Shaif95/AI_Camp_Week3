@@ -128,6 +128,7 @@ plt.show()
 
 st.pyplot()
 
+
 st.write(
   "Higher perceptions of corruption are mostly correlated with a higher happiness index. Most countries with a happiness index from 7-8 have a perception of corruption of 0.3-0.4. These are most likely correlated beacuse the higher the perception of corruption is the less corrupt a country is. Most likely leading to the people of the country to be more content and happy."
 )
@@ -164,7 +165,7 @@ df.drop_duplicates(inplace=True)
 #Scatter plot, hue = country
 import seaborn as sns
 
-sns.scatterplot(data=df, x="GDP per capita", y="Score")
+sns.lineplot(data=df, x="GDP per capita", y="Score")
 
 st.pyplot()
 
@@ -175,7 +176,7 @@ sns.heatmap(df.corr())
 st.pyplot()
 
 st.write(
-  "As seen in the heatmap, GDP and score have a high level of correlation. This means that countries who have a higher GDP per capita tend to also have a high level of happiness. However, while this does seem possible, this isnt always 100% true. The country with the highest GDP per capita (United States of America) does not have the hgihest level of happiness, meaning that GDP may not always lead to hgih levels of happiness. Nonetheless, as seen within the scatterplot, there is a positive correlation between GDP per Capita and Score."
+  "As seen in the heatmap, GDP and score have a high level of correlation. This means that countries who have a higher GDP per capita tend to also have a high level of happiness. However, while this does seem possible, this isnt always 100% true. The country with the highest GDP per capita (United States of America) does not have the hgihest level of happiness, meaning that GDP may not always lead to hgih levels of happiness. Nonetheless, as seen within the lineplot, there is generally a positive correlation between GDP per Capita and Score."
 )
 st.dataframe(df[df["Overall rank"] <= 5].head(20))
 #Can we predict Happiness score using GDP Per Capita?
