@@ -13,9 +13,17 @@ import numpy as np
 #look for more information here https://docs.streamlit.io/library/cheatsheet
 
 #adding title
-st.title("Title Here")
+st.title("Vivacious Vultures")
 
-st.write()
+st.write("Hello, I am Chloe and I am a rising senior. I took this course in order to explore data sc")
+
+st.write("Isaiah")
+
+st.write("Taylor")
+
+st.write("Marcus")
+
+st.write("Matthew")
 
 df = pd.read_csv("report_2018-2019.csv")
 
@@ -28,22 +36,28 @@ st.write(
 st.header(
   'Does a higher happiness index score lead to higher life expectancy?')
 st.write(
-  'The  evidence suggests that those who live in coutries that are happier are '
+  'The  evidence suggests that those who live in coutries with a higher happiness score are more likely to live longer. The correlation '
 )
-import seaborn as sns
-
 sns.set_theme()
-df = pd.read_csv(
-  "https://github.com/Shaif95/AI_camp/raw/main/report_2018-2019.csv")
 sns.scatterplot(
   data=df,
   x="Score",
   y="Healthy life expectancy",
 )
 
-#Scatter Plot with seaborn, matplotlib
 
-#What countries have the highest and lowest happiness index?
+st.header('What countries have the highest and lowest happiness index?')
+st.write('Answer')
+
+dfw = df[df["Year"] == 2018]
+sorted_dfw = dfw.sort_values('Score', ascending=False)
+fig = px.bar(sorted_dfw.head(10), x='Country or region', y='Score', title='High Scoring Countries')
+fig.show()
+
+dfw = df[df["Year"] == 2018]
+sorted_dfw = dfw.sort_values('Score', ascending=True)
+fig = px.bar(sorted_dfw.head(10), x='Country or region', y='Score', title='Low Scoring Countries')
+fig.show()
 
 #Bar chart
 
@@ -74,21 +88,24 @@ st.write(
 #Line
 
 #Marcus
-#Does Freedom to make Choices to Happiness correlate to happines?
-sns.scatterplot(data=df, x="Social support", y="Score")
-#Does Social Support correlate to happines?
+sns.set_theme()
+#Does Social Support correlate to happiness?
+sns.scatterplot(
+    data=df,
+    x="Social support", y="Score")
+st.write(
+    "The amount of social support a country has is likely correlated to to a higher level of happiness shown within the happiness index, as most countries with a 7 or above have higher values of social support (typically at values 1.4 or higher)."
+)
+#Does Freedom to make Choices to Happiness correlate to happiness?
 sns.scatterplot(
     data=df,
    x="Freedom to make life choices", y="Score")
 st.write(
-    "The freedom to make life choices is likely correlated to to a higher level of happiness shown within the happiness index, as most countries with a 7 or above have higher values of claimed freedom to make lif"
+    "The freedom to make life choices is likely correlated to to a higher level of happiness shown within the happiness index, as most countries with a 7 or above have higher values of claimed freedom to make life choices (typically at values 0.5 or higher)."
 )
 
 #Matthew
 #Does high/low gdp per capita correlate to happines?
-
-import pandas as pd
-
 st.header(
   "Hypothesis: Does a higher GDP per capita lead to a higher level of happiness?"
 )
@@ -109,7 +126,32 @@ st.write(
 )
 df[df["Overall rank"] <= 5].head(20)
 #Can we predict Happiness score using GDP Per Capita?
-
+st.header("Can we predict a happiness score using GDP Per Capita")
 #Linear Regression Plot
-
+from sklearn import *
+import numpy as np
+import matplotlib
+from sklearn.linear_model import LinearRegression
+length = len(df.index)
+X = df['GDP per capita'].to_numpy()
+y = df['Score'].to_numpy()
+idx = np.arange(length)
+np.random.shuffle(idx)
+split_threshold = int(length * .8)
+train_idx = idx[:split_threshold]
+test_idx = idx[split_threshold:]
+x_train, y_train = X[train_idx], y[train_idx]
+x_test, y_test = X[test_idx], y[test_idx]
+x_train= x_train.reshape(-1, 1)
+y_train= y_train.reshape(-1, 1)
+x_test = x_test.reshape(-1, 1)
+plt.figure(figsize=(10,5))
+plt.show()
+linr = LinearRegression()
+linr = LinearRegression()
+linr.fit(x_train, y_train)
+print(linr.intercept_, linr.coef_[0])
+y_hat = linr.predict(x_test)
+plt.figure(figsize=(10,5))
+plt.plot(x_test, y_hat, '--')
 #Conclusion
