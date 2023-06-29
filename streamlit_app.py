@@ -41,27 +41,24 @@ st.text('This week, we were given data about the happiness levels of different c
 import seaborn as sns     #
 sns.set_theme()
 
-sns.scatterplot()
-    data=df,
-    x="Generosity", y="Score")  # need to study more
+sns.scatterplot(data=df,x="Generosity", y="Score")  # need to study more
 
 #Taylor
 #Is Perception of Corruption correlated to happiness?
+import pandas as pd
 st.header("Hypothesis: Is Perception of Corruption correlated to happiness?")
 
-
-df.head(10)
 import seaborn as sns
 sns.set_theme()
 
 
 sns.scatterplot(
     data=df,
-    x="Perceptions of corruption", y="Score"
-)
+    x="Perceptions of corruption", y="Score")
 
 #Scatter Plot
 #Line
+
 
 #Marcus
 #Does Freedom to make Choices to Happiness correlate to happines?
@@ -72,6 +69,7 @@ sns.scatterplot(
 sns.scatterplot(
     data=df,
    x="Freedom to make life choices", y="Score")
+st.write("Higher perceptions of corruption are mostly correlated with a higher happiness index. Most countries with a happiness index from 7-8 have a perception of corruption of 0.3-0.4. These are most likely correlated beacuse the higher the perception of corruption is the less corrupt a country is. Most likely leading to the people of the country to be more content and happy.")
 
 #Matthew
 #Does high/low gdp per capita correlate to happines?
@@ -87,7 +85,7 @@ sns.scatterplot(data = df, x="GDP per capita", y="Score")
 #Can we predict Happiness score using GDP Per Capita?
 from seaborn.matrix import heatmap
 sns.heatmap(df.corr())
-
+st.write("As seen in the heatmap, GDP and score have a high level of correlation. This means that countries who have a higher GDP per capita tend to also have a high level of happiness. However, while this ")
 #Linear Regression Plot
 
 #Conclusion
