@@ -44,9 +44,6 @@ st.write(
 
 st.header(
   'Does a higher happiness index score lead to higher life expectancy?')
-st.write(
-  'The  evidence suggests that those who live in coutries with a higher happiness score are more likely to live longer. There is a correlation between the two. As observed, the life expectancy increases as the score increases.'
-)
 
 sns.set_theme()
 sns.scatterplot(
@@ -55,13 +52,14 @@ sns.scatterplot(
   y="Healthy life expectancy",
 )
 
+st.write(
+  'The  evidence suggests that those who live in coutries with a higher happiness score are more likely to live longer. There is a correlation between the two. As observed, the life expectancy increases as the score increases.'
+)
+
 st.pyplot()
 #Scatter Plot
 
 st.header('What countries have the highest and lowest happiness index?')
-st.write(
-  'As the bar graph shows, the countries with the highest happiness index are Finland, Norway and Denmark. Finland has the highest score of 7.632. On the other hand the countries with the lowest scores are Burundi, Central African Republic and South Sudan. Burundi has the lowest score of 2.905, a little over a third of the score Finland received.'
-)
 
 dfw = df[df["Year"] == 2018]
 sorted_dfw = dfw.sort_values('Score', ascending=False)
@@ -78,6 +76,10 @@ fig = px.bar(sorted_dfw.head(10),
              y='Score',
              title='Low Scoring Countries')
 st.plotly_chart(fig)
+
+st.write(
+  'As the bar graphs shows, the countries with the highest happiness index are Finland, Norway and Denmark. Finland has the highest score of 7.632. On the other hand the countries with the lowest scores are Burundi, Central African Republic and South Sudan. Burundi has the lowest score of 2.905, a little over a third of the score Finland received.'
+)
 #Bar Chart
 
 #Isaiah
@@ -87,13 +89,18 @@ import seaborn as sns
 
 sns.set_theme()
 
-st.header(
-  "hypothesis: does generosity affect the happiness score of a country")
+st.header("hypothesis: does generosity affect the happiness score of a country")
+import seaborn as sns     #
+sns.set_theme()
 
-sns.scatterplot(data=df, x="Generosity", y="Score")
-st.write(
-  "The scatter plot shows that whether there are low or high rates of generosity its effects on happiness are minimal "
-)
+url_dataframe = 'https://github.com/Shaif95/AI_camp/raw/main/report_2018-2019.csv'
+
+
+sns.scatterplot(
+    data=df,
+    x="Generosity", y="Score")
+
+st.write( "The scatter plot shows that whether there are low or high rates of generosity its effects on happiness are minimal ")
 st.pyplot()
 
 #Taylor
@@ -175,17 +182,21 @@ st.dataframe(df[df["Overall rank"] <= 5].head(20))
 st.header("Can we predict a happiness score using GDP Per Capita")
 #Linear Regression Plot
 import statistics
-from sklearn import *
-import numpy as np
-import matplotlib
-from sklearn.linear_model import LinearRegression
 
 length = len(df.index)
+import streamlit as st
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Assuming you have the necessary data and preprocessing steps already performed
+
 X = df['GDP per capita'].to_numpy()
 y = df['Score'].to_numpy()
+
+length = len(X)
 idx = np.arange(length)
 np.random.shuffle(idx)
-split_threshold = int(length * .8)
+split_threshold = int(length * 0.8)
 train_idx = idx[:split_threshold]
 test_idx = idx[split_threshold:]
 x_train, y_train = X[train_idx], y[train_idx]
@@ -193,24 +204,30 @@ x_test, y_test = X[test_idx], y[test_idx]
 x_train = x_train.reshape(-1, 1)
 y_train = y_train.reshape(-1, 1)
 x_test = x_test.reshape(-1, 1)
-plt.figure(figsize=(10, 5))
-plt.show()
-linr = LinearRegression()
-linr = LinearRegression()
-linr.fit(x_train, y_train)
-print(linr.intercept_, linr.coef_[0])
-y_hat = linr.predict(x_test)
-plt.figure(figsize=(10, 5))
-plt.plot(x_test, y_hat, '--')
 
-plt.scatter(x_test, y_test, c='red')
-plt.xlabel('GDP per Capita', fontsize=20)
-plt.ylabel('Happiness Score', fontsize=20)
-plt.title('Happiness Score vs GDP per Capita')
-plt.grid('on')
-plt.show()
+# Calculate the coefficients using numpy
+X_train = np.concatenate((x_train, np.ones_like(x_train)), axis=1)
+coefficients = np.linalg.lstsq(X_train, y_train, rcond=None)[0]
 
-st.pyploy(plt)
+# Extract the slope and intercept
+slope = coefficients[0][0]
+intercept = coefficients[1][0]
+
+# Make predictions on the test data
+y_hat = slope * x_test + intercept
+
+# Plotting the data
+fig, ax = plt.subplots(figsize=(10, 5))
+ax.plot(x_test, y_hat, '--')
+ax.scatter(x_test, y_test, c='red')
+ax.set_xlabel('GDP per Capita', fontsize=20)
+ax.set_ylabel('Happiness Score', fontsize=20)
+ax.set_title('Happiness Score vs GDP per Capita')
+ax.grid(True)
+
+# Display the plot using Streamlit
+st.pyplot(fig)
+
 st.write(
   "As seen in the plot of linear regression an increase in GDP also typically leads to an increase in score. Still, we are able to see that whie Happiness Score and GDP per Capita might be related they are not exact. This means we might be able to make close prediction of what a country would look like with a certain GDP but it wouldnt be fully accurate. However, this does offer the possibility of a fairly accurate prediction."
 )
