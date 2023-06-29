@@ -61,9 +61,7 @@ st.pyplot()
 #Scatter Plot
 
 st.header('What countries have the highest and lowest happiness index?')
-st.write(
-  'As the bar graph shows, the countries with the highest happiness index are Finland, Norway and Denmark. On the other hand the countries with the lowest scores are Burundi, Central African Republic and South Sudan.'
-)
+st.write('As the bar graph shows, the countries with the highest happiness index are Finland, Norway and Denmark. Finland has the highest score of 7.632. On the other hand the countries with the lowest scores are Burundi, Central African Republic and South Sudan. Burundi has the lowest score of 2.905, a little over a third of Finland.')
 
 dfw = df[df["Year"] == 2018]
 sorted_dfw = dfw.sort_values('Score', ascending=False)
@@ -85,12 +83,12 @@ st.plotly_chart(fig)
 #Isaiah
 #Does generosity affect Happiness Score of a country?
 #Scatter Plot hue = country
-import seaborn as sns  #
+import seaborn as sns
 
 sns.set_theme()
 
-sns.scatterplot(data=df, x="Generosity", y="Score")  # need to study more
-
+sns.scatterplot(data=df, x="Generosity", y="Score")  
+st.write ("The scatter plot shows that whether there are low or high rates of generosity its effects on happiness are minimal ")
 st.pyplot()
 
 #Taylor
@@ -198,5 +196,5 @@ plt.grid('on')
 plt.show()
 
 st.pyploy(plt)
-st.write("As seen in the pl")
+st.write("As seen in the plot of linear regression an increase in GDP also typically leads to an increase in score. Still, we are able to see that whie Happiness Score and GDP per Capita might be related they are not exact")
 #Conclusion
