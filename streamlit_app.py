@@ -27,7 +27,7 @@ st.write(
 )
 
 st.write(
-  "Hello, I'm Marcus Smissen, a soon to be junion. I decided to take this  week long course so I could learn more about python."
+  "Hello, I'm Marcus Smissen, a soon to be junior. I decided to take this  week long course so I could learn more about python."
 )
 
 st.write(
@@ -45,7 +45,8 @@ st.write(
 st.write(df.head(5))
 st.text("Chloe")
 st.header(
-  'Hypothesis1 : Does a higher happiness index score lead to higher life expectancy?')
+  'Hypothesis 1 : Does a higher happiness index score lead to higher life expectancy?'
+)
 
 sns.set_theme()
 sns.scatterplot(
@@ -61,7 +62,8 @@ st.write(
 st.pyplot()
 #Scatter Plot
 
-st.header('Hypothesis2 : What countries have the highest and lowest happiness index?')
+st.header(
+  'Hypothesis 2 : What countries have the highest and lowest happiness index?')
 
 dfw = df[df["Year"] == 2018]
 sorted_dfw = dfw.sort_values('Score', ascending=False)
@@ -102,13 +104,14 @@ url_dataframe = 'https://github.com/Shaif95/AI_camp/raw/main/report_2018-2019.cs
 sns.scatterplot(data=df, x="Generosity", y="Score")
 
 st.write(
-  "The scatter plot shows that whether there are low or high rates of generosity its effects on happiness are minimal "
+  " As shown in the scatter plot below whether there are low or high rates of generosity its effects on happiness are minimal "
 )
 st.pyplot()
 
 #Taylor
 #Is Perception of Corruption correlated to happiness?
 import pandas as pd
+
 st.text("Taylor")
 st.header("Hypothesis 4: Is Perception of Corruption correlated to happiness?")
 
@@ -138,8 +141,11 @@ st.write(
 #Line
 st.text("Marcus")
 #Marcus
+
+st.header("Hypothesis 5 : Does Social Support correlate to happiness?")
 sns.set_theme()
-#Does Social Support correlate to happiness?
+
+
 sns.scatterplot(data=df, x="Social support", y="Score")
 
 st.pyplot()
@@ -147,7 +153,11 @@ st.pyplot()
 st.write(
   "The amount of social support a country has is likely correlated to to a higher level of happiness shown within the happiness index, as most countries with a 7 or above have higher values of social support (typically at values 1.4 or higher)."
 )
-#Does Freedom to make Choices to Happiness correlate to happiness?
+
+
+st.header(
+  "Hypothesis 6 : Does Freedom to make Choices to Happiness correlate to happiness?"
+)
 sns.scatterplot(data=df, x="Freedom to make life choices", y="Score")
 
 st.pyplot()
@@ -159,7 +169,7 @@ st.text("Matthew")
 #Matthew
 #Does high/low gdp per capita correlate to happines?
 st.header(
-  "Hypothesis 5: Does a higher GDP per capita lead to a higher level of happiness?"
+  "Hypothesis 7: Does a higher GDP per capita lead to a higher level of happiness?"
 )
 #Cleaning Data
 df.dropna(inplace=True)
@@ -187,7 +197,8 @@ st.write(
 )
 st.dataframe(df[df["Overall rank"] <= 5].head(20))
 #Can we predict Happiness score using GDP Per Capita?
-st.header("Hypothesis 6 : Can we predict a happiness score using GDP Per Capita")
+st.header(
+  "Hypothesis 8 : Can we predict a happiness score using GDP Per Capita")
 #Linear Regression Plot
 import statistics
 
@@ -239,4 +250,7 @@ st.pyplot(fig)
 st.write(
   "As seen in the plot of linear regression an increase in GDP also typically leads to an increase in score. Still, we are able to see that whie Happiness Score and GDP per Capita might be related they are not exact. This means we might be able to make close prediction of what a country would look like with a certain GDP but it wouldnt be fully accurate. However, this does offer the possibility of a fairly accurate prediction."
 )
+
+st.header("Conclusion")
 #Conclusion
+st.write("This data science project analyzed the happiness levels of different countries and identified factors such as life expectancy, corruption perception, and GDP per capita that contribute to happiness. The findings revealed correlations between these factors and the happiness index, providing insights into the determinants of happiness at a country level.")
