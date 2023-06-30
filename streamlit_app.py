@@ -19,7 +19,7 @@ st.write(
 )
 
 st.write(
-  "hi im Isaiah im gonna be a senior and I'm from Texas. i decided to take this course so i cam better understand coding so that i myself can use it"
+  "hi im Isaiah im gonna be a senior and I'm from Texas. i decided to take this course so i can better understand coding so that i can use it"
 )
 
 st.write(
@@ -144,7 +144,6 @@ st.text("Taylor")
 st.header("Hypothesis 5 : Does Social Support correlate to happiness?")
 sns.set_theme()
 
-
 sns.scatterplot(data=df, x="Social support", y="Score")
 
 st.pyplot()
@@ -152,7 +151,6 @@ st.pyplot()
 st.write(
   "The amount of social support a country has is likely correlated to to a higher level of happiness shown within the happiness index, as most countries with a 7 or above have higher values of social support (typically at values 1.4 or higher)."
 )
-
 
 st.header(
   "Hypothesis 6 : Does Freedom to make Choices to Happiness correlate to happiness?"
@@ -194,7 +192,7 @@ st.pyplot()
 st.write(
   "As seen in the heatmap, GDP and score have a high level of correlation. This means that countries who have a higher GDP per capita tend to also have a high level of happiness. However, while this does seem possible, this isnt always 100% true. The country with the highest GDP per capita (United States of America) does not have the hgihest level of happiness, meaning that GDP may not always lead to hgih levels of happiness. Nonetheless, as seen within the lineplot, there is generally a positive correlation between GDP per Capita and Score."
 )
-st.dataframe(df[df["Overall rank"] <= 5].head(20))
+st.write(df[df["Overall rank"] <= 5].head(20))
 #Can we predict Happiness score using GDP Per Capita?
 st.header(
   "Hypothesis 8 : Can we predict a happiness score using GDP Per Capita")
@@ -252,4 +250,6 @@ st.write(
 
 st.header("Conclusion")
 #Conclusion
-st.write("This data science project analyzed the happiness levels of different countries and identified factors such as life expectancy, corruption perception, and GDP per capita that contribute to happiness. The findings revealed correlations between these factors and the happiness index, providing insights into the determinants of happiness at a country level.")
+st.write(
+  "This data science project analyzed the happiness levels of different countries and identified factors such as life expectancy, corruption perception, and GDP per capita that contribute to happiness. The findings revealed correlations between these factors and the happiness index, providing insights into the determinants of happiness at a country level."
+)
