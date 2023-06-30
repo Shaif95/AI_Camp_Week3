@@ -27,7 +27,7 @@ st.write(
 )
 
 st.write(
-  "Hello, I'm Marcus Smissen, a soon to be junior. I decided to take this  week long course so I could learn more about python."
+  "Hello, Marcus Smissen is a junior and decided to take this  week long course so He can learn more about python."
 )
 
 st.write(
@@ -36,7 +36,6 @@ st.write(
 
 df = pd.read_csv("report_2018-2019.csv")
 
-#Chloe
 st.header("Introduction")
 st.write(
   "This week, we were given data about the happiness levels of different countries. Along with each country's happiness index, we were also given other pieces of information that may factor in how content a region is. We used this data to create hypothesises and identify what affects happiness and how they do so."
@@ -139,7 +138,7 @@ st.write(
 )
 #Scatter Plot
 #Line
-st.text("Marcus")
+st.text("Taylor")
 #Marcus
 
 st.header("Hypothesis 5 : Does Social Support correlate to happiness?")
