@@ -171,6 +171,11 @@ st.pyplot()
 
 from seaborn.matrix import heatmap
 
+df = df.dropna()
+
+# Convert non-numeric columns to numeric types if necessary
+df = df.astype(float)
+
 fig56 =  sns.heatmap(df.corr())
 
 st.pyplot(fig56)
