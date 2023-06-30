@@ -192,7 +192,9 @@ st.pyplot()
 st.write(
   "As seen in the heatmap, GDP and score have a high level of correlation. This means that countries who have a higher GDP per capita tend to also have a high level of happiness. However, while this does seem possible, this isnt always 100% true. The country with the highest GDP per capita (United States of America) does not have the hgihest level of happiness, meaning that GDP may not always lead to hgih levels of happiness. Nonetheless, as seen within the lineplot, there is generally a positive correlation between GDP per Capita and Score."
 )
-st.write(df[df["Overall rank"] <= 5].head(20))
+
+df2 = pd.read_csv("report_2018-2019.csv")
+st.write(df2[df2["Overall rank"] <= 5].head(20))
 #Can we predict Happiness score using GDP Per Capita?
 st.header(
   "Hypothesis 8 : Can we predict a happiness score using GDP Per Capita")
