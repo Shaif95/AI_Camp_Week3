@@ -42,8 +42,10 @@ st.write(
   "This week, we were given data about the happiness levels of different countries. Along with each country's happiness index, we were also given other pieces of information that may factor in how content a region is. We used this data to create hypothesises and identify what affects happiness and how they do so."
 )
 
+st.write(df.head(5))
+
 st.header(
-  'Does a higher happiness index score lead to higher life expectancy?')
+  'Hypothesis1 : Does a higher happiness index score lead to higher life expectancy?')
 
 sns.set_theme()
 sns.scatterplot(
@@ -59,7 +61,7 @@ st.write(
 st.pyplot()
 #Scatter Plot
 
-st.header('What countries have the highest and lowest happiness index?')
+st.header('Hypothesis2 : What countries have the highest and lowest happiness index?')
 
 dfw = df[df["Year"] == 2018]
 sorted_dfw = dfw.sort_values('Score', ascending=False)
@@ -89,25 +91,26 @@ import seaborn as sns
 
 sns.set_theme()
 
-st.header("hypothesis: does generosity affect the happiness score of a country")
-import seaborn as sns     #
+st.header(
+  "Hypothesis3: does generosity affect the happiness score of a country")
+import seaborn as sns  #
+
 sns.set_theme()
 
 url_dataframe = 'https://github.com/Shaif95/AI_camp/raw/main/report_2018-2019.csv'
 
+sns.scatterplot(data=df, x="Generosity", y="Score")
 
-sns.scatterplot(
-    data=df,
-    x="Generosity", y="Score")
-
-st.write( "The scatter plot shows that whether there are low or high rates of generosity its effects on happiness are minimal ")
+st.write(
+  "The scatter plot shows that whether there are low or high rates of generosity its effects on happiness are minimal "
+)
 st.pyplot()
 
 #Taylor
 #Is Perception of Corruption correlated to happiness?
 import pandas as pd
 
-st.header("Hypothesis: Is Perception of Corruption correlated to happiness?")
+st.header("Hypothesis 4: Is Perception of Corruption correlated to happiness?")
 
 import seaborn as sns
 
@@ -127,7 +130,6 @@ plt.plot(x_values, line_values, color='red')
 plt.show()
 
 st.pyplot()
-
 
 st.write(
   "Higher perceptions of corruption are mostly correlated with a higher happiness index. Most countries with a happiness index from 7-8 have a perception of corruption of 0.3-0.4. These are most likely correlated beacuse the higher the perception of corruption is the less corrupt a country is. Most likely leading to the people of the country to be more content and happy."
@@ -157,7 +159,7 @@ st.write(
 #Matthew
 #Does high/low gdp per capita correlate to happines?
 st.header(
-  "Hypothesis: Does a higher GDP per capita lead to a higher level of happiness?"
+  "Hypothesis 5: Does a higher GDP per capita lead to a higher level of happiness?"
 )
 #Cleaning Data
 df.dropna(inplace=True)
@@ -176,7 +178,6 @@ df = df.dropna()
 numeric_columns = df.columns  # Adjust this to include only the numeric columns you want to convert
 df[numeric_columns] = df[numeric_columns].apply(pd.to_numeric, errors='coerce')
 
-
 sns.heatmap(df.corr())
 
 st.pyplot()
@@ -186,7 +187,7 @@ st.write(
 )
 st.dataframe(df[df["Overall rank"] <= 5].head(20))
 #Can we predict Happiness score using GDP Per Capita?
-st.header("Can we predict a happiness score using GDP Per Capita")
+st.header("Hypothesis 6 : Can we predict a happiness score using GDP Per Capita")
 #Linear Regression Plot
 import statistics
 
