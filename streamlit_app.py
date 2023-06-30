@@ -15,6 +15,10 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 st.title("Vivacious Vultures")
 
 st.write(
+  "Hello, I'm Matthew and I am a rising senior. I took this course to explore how data science can be used in applications of coding and I hope to work with more coding and data science."
+)
+
+st.write(
   "Hello, I am Chloe and I am a rising senior from Florida. I took this course in order to explore data science and learn some coding."
 )
 
@@ -28,10 +32,6 @@ st.write(
 
 st.write(
   "Hello, Marcus Smissen is a junior and decided to take this  week long course so He can learn more about python."
-)
-
-st.write(
-  "Hello, I'm Matthew and I am a rising senior. I took this course to explore how data science can be used in applications of coding and I hope to work with more coding and data science."
 )
 
 df = pd.read_csv("report_2018-2019.csv")
