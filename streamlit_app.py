@@ -173,8 +173,9 @@ from seaborn.matrix import heatmap
 
 df = df.dropna()
 
-# Convert non-numeric columns to numeric types if necessary
-df = df.astype(float)
+numeric_columns = df.columns  # Adjust this to include only the numeric columns you want to convert
+df[numeric_columns] = df[numeric_columns].apply(pd.to_numeric, errors='coerce')
+
 
 fig56 =  sns.heatmap(df.corr())
 
