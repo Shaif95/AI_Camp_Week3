@@ -43,7 +43,7 @@ st.write(
 )
 
 st.write(df.head(5))
-
+st.text("Chloe")
 st.header(
   'Hypothesis1 : Does a higher happiness index score lead to higher life expectancy?')
 
@@ -90,7 +90,7 @@ st.write(
 import seaborn as sns
 
 sns.set_theme()
-
+st.text("Isaiah")
 st.header(
   "Hypothesis3: does generosity affect the happiness score of a country")
 import seaborn as sns  #
@@ -109,7 +109,7 @@ st.pyplot()
 #Taylor
 #Is Perception of Corruption correlated to happiness?
 import pandas as pd
-
+st.text("Taylor")
 st.header("Hypothesis 4: Is Perception of Corruption correlated to happiness?")
 
 import seaborn as sns
@@ -136,7 +136,7 @@ st.write(
 )
 #Scatter Plot
 #Line
-
+st.text("Marcus")
 #Marcus
 sns.set_theme()
 #Does Social Support correlate to happiness?
@@ -155,7 +155,7 @@ st.pyplot()
 st.write(
   "The freedom to make life choices is likely correlated to to a higher level of happiness shown within the happiness index, as most countries with a 7 or above have higher values of claimed freedom to make life choices (typically at values 0.5 or higher)."
 )
-
+st.text("Matthew")
 #Matthew
 #Does high/low gdp per capita correlate to happines?
 st.header(
